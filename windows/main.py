@@ -17,7 +17,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt, QThread, Signal, QThreadPool, QRunnable, QObject
 
-from common.locallization import Localization
+from common.localization import LocalizationManager
 from common.udp_discovery import UDPDiscoveryService, DiscoveredDevice
 from common.websocket_transfer import WebSocketClient, TransferState
 from common.utils import setup_logger, format_bytes
@@ -28,7 +28,7 @@ logger = setup_logger(__name__)
 class LocalizationWrapper:
     """多语言适配器"""
     def __init__(self, locale_dir: str = str(Path(__file__).parent.parent / 'locale')):
-        self._lm = Localization(locale_dir)
+        self._lm = LocalizationManager(locale_dir)
         self._lm.load_locale('zh')
         self._lm.set_locale('zh')
     
