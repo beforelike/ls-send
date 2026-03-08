@@ -44,3 +44,15 @@ android.window_description = A cross-platform file transfer tool
 
 # (str) Log level
 android.log_level = 2
+
+# (str) Requirements
+requirements = kivy>=2.3.0,plyer>=2.1.0,websockets>=11.0
+
+# (bool) Use AndroidX support
+android.androidx = True
+
+# (str) Android logcat filter
+android.logcat_filter = *:S Python:D
+
+# (bool) Copy libraries instead of symlinking
+android.copy_libs = True

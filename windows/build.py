@@ -14,7 +14,7 @@ from pathlib import Path
 
 def build_exe():
     """使用 PyInstaller 构建 EXE"""
-    ls_dir = Path(__file__).parent.parent
+    ls_dir = Path(__file__).resolve().parent.parent
     
     # 检查 PyInstaller 是否安装
     try:
@@ -31,6 +31,11 @@ def build_exe():
         print(f"错误: 主文件不存在 {main_file}")
         return False
     
+    # 构建资源文件路径（使用 Windows 风格分隔符）
+    def normalize_path(p: Path) -> str:
+        """将路径转换为 Windows 风格（分号分隔）"""
+        return str(p).replace('\\', '/')
+    
     # 运行 PyInstaller 构建
     try:
         # 清理旧的构建文件
@@ -39,24 +44,54 @@ def build_exe():
             import shutil
             shutil.rmtree(build_dir)
         
+        # 确保 dist 和 build 目录存在
+        dist_dir = ls_dir / 'dist'
+        build_dir_inner = ls_dir / 'build'
+        dist_dir.mkdir(exist_ok=True)
+        build_dir_inner.mkdir(exist_ok=True)
+        
+        # 资源文件路径
+        locale_src = normalize_path(ls_dir / 'locale')
+        common_src = normalize_path(ls_dir / 'common')
+        
+        print(f"[INFO] 项目根目录: {normalize_path(ls_dir)}")
+        print(f"[INFO] 主文件: {normalize_path(main_file)}")
+        print(f"[INFO] locale 路径: {locale_src}")
+        print(f"[INFO] common 路径: {common_src}")
+        
         # 运行打包（使用双引号包装路径）
-        subprocess.run([
+        cmd = [
             "pyinstaller",
             "--onefile",
             "--windowed",  # 无控制台窗口
             "--name", "LS_send",
-            "--add-data", f"{str(ls_dir).replace(chr(92), '/')}/locale;locale",
-            "--add-data", f"{str(ls_dir).replace(chr(92), '/')}/common;common",
+            "--add-data", f"{locale_src};locale",
+            "--add-data", f"{common_src};common",
             "--hidden-import", "PySide6.QtWidgets",
             "--hidden-import", "PySide6.QtCore",
             "--hidden-import", "PySide6.QtGui",
-            str(main_file).replace(chr(92), '/')
-        ], check=True)
+            "--clean",
+            str(main_file)
+        ]
         
-        print(f"[SUCCESS] EXE built at: {ls_dir / 'dist' / 'LS_send.exe'}")
-        return True
+        print(f"[INFO] 执行命令: {' '.join(cmd)}")
+        
+        result = subprocess.run(cmd, cwd=str(ls_dir), check=True)
+        
+        exe_path = dist_dir / 'LS_send.exe'
+        if exe_path.exists():
+            print(f"[SUCCESS] EXE built at: {normalize_path(exe_path)}")
+            return True
+        else:
+            print(f"[ERROR] EXE 文件未找到: {normalize_path(exe_path)}")
+            return False
+            
     except subprocess.CalledProcessError as e:
-        print(f"[ERROR] Build failed: {e}")
+        print(f"[ERROR] Build failed with exit code {e.returncode}")
+        print(f"[ERROR] Error: {e}")
+        return False
+    except Exception as e:
+        print(f"[ERROR] Unexpected error: {e}")
         return False
 
 
