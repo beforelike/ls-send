@@ -44,7 +44,7 @@ android.use_androidx = True
 # (list) APK architectures to build
 android.arch = armeabi-v7a
 
-# (bool) Build with.Debugf
+# (bool) Build with DEBUG mode
 #android.debug = 1
 
 # (bool) Build with release mode
@@ -65,8 +65,8 @@ android.api = 31
 # (int) Minimum SDK version
 android.minapi = 21
 
-# (bool) Use the #SDL2 window
-androidpygame舞 => sdl2
+# (bool) Use the SDL2 window
+#android.sdl2 = True
 
 # (str) Private assets directory
 android.private_assets = assets/
@@ -117,7 +117,7 @@ android.add_src = .
 #android.window_title = LS send
 
 # (str) Application description
-#android.window_description = LF send, A cross-platform file transfer tool
+#android.window_description = A cross-platform file transfer tool
 
 # (bool) Hide the application icon from the launcher
 #android.hide_icon = False
@@ -132,7 +132,7 @@ android.immersive = 1
 #android.always_on_top = False
 
 # (str) Copyright
-#android.copyright = © 2026 LS send
+#android.copyright = (c) 2026 LS send
 
 # (str) Author
 #android.author = LS team
@@ -233,38 +233,20 @@ android.immersive = 1
 # (str) Google Play vr icon
 #android.play_store_vr_icon =
 
-# (str) Google play icon
+# (str) Google Play icon
 #android.play_store_icon =
 
-# (str) Google play banner
+# (str) Google Play banner
 #android.play_store_banner =
 
-# (str) Google play TV banner
+# (str) Google Play TV banner
 #android.play_store_tv_banner =
 
-# (str) Google play wear icon
+# (str) Google Play wear icon
 #android.play_store_wear_icon =
 
-# (str) Google play auto icon
+# (str) Google Play auto icon
 #android.play_store_auto_icon =
 
-# (str) Google play vr icon
-#android.play_store_vr_icon =
-
-# (str) Google play icon
-#android.play_store_icon =
-
-# (str) Google play banner
-#android.play_store_banner =
-
-# (str) Google play TV banner
-#android.play_store_tv_banner =
-
-# (str) Google play wear icon
-#android.play_store_wear_icon =
-
-# (str) Google play auto icon
-#android.play_store_auto_icon =
-
-# (str) Google play vr icon
+# (str) Google Play vr icon
 #android.play_store_vr_icon =

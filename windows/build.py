@@ -39,24 +39,24 @@ def build_exe():
             import shutil
             shutil.rmtree(build_dir)
         
-        # 运行打包
+        # 运行打包（使用双引号包装路径）
         subprocess.run([
             "pyinstaller",
             "--onefile",
             "--windowed",  # 无控制台窗口
             "--name", "LS_send",
-            "--add-data", f"{ls_dir}/locale;locale",
-            "--add-data", f"{ls_dir}/common/common;common",
+            "--add-data", f"{str(ls_dir).replace(chr(92), '/')}/locale;locale",
+            "--add-data", f"{str(ls_dir).replace(chr(92), '/')}/common;common",
             "--hidden-import", "PySide6.QtWidgets",
             "--hidden-import", "PySide6.QtCore",
             "--hidden-import", "PySide6.QtGui",
-            str(main_file)
+            str(main_file).replace(chr(92), '/')
         ], check=True)
         
-        print(f"✓ EXE 构建成功！位置: {ls_dir / 'dist' / 'LS_send.exe'}")
+        print(f"[SUCCESS] EXE built at: {ls_dir / 'dist' / 'LS_send.exe'}")
         return True
     except subprocess.CalledProcessError as e:
-        print(f"✗ 构建失败: {e}")
+        print(f"[ERROR] Build failed: {e}")
         return False
 
 
