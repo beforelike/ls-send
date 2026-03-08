@@ -1,0 +1,3 @@
+"""
+LS Send - Android Package
+"""
