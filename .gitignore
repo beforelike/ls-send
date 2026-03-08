@@ -1,0 +1,53 @@
+*.pyc
+__pycache__
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.pytest_cache/
+*.log
+
+# Buildozer
+*.apk
+*.aab
+bin/
+.obj/
+.gradle/
+.local/
+
+# PyInstaller
+build/
+dist/
+*.spec.bak
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+dev-log*.md
+
+# temporary files
+*.tmp
+*.temp
