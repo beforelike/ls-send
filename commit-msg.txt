@@ -1,0 +1,7 @@
+feat: 完善 UDP 自发现 + WebSocket 传输服务
+
+- 补全 UDP 发现服务：接收端监听逻辑、设备列表管理（超时清理、持久化）
+- 补全 WebSocket 传输服务：接收端（守护进程+接收文件块+推送进度）、发送端（连接+分块发送+确认）
+- 完整的握手+传输流
+- 修复 LocalizationManager 导入错误（已更新为 Localization）
+- 更新 __init__.py 导出新模块

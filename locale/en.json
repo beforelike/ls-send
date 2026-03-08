@@ -1,0 +1,32 @@
+{
+  "zh": {
+    "app_title": "LS send",
+    "file_selector_label": "选择文件：",
+    "browse_button": "浏览",
+    "send_button": "发送",
+    "device_list_label": "可选设备：",
+    "progress_title": "文件传输",
+    "cancel_button": "取消",
+    "notification_title": "收到文件请求",
+    "notification_accept": "接收",
+    "notification_decline": "拒绝",
+    "transferring": "正在传输: {filename}",
+    "complete": "传输完成",
+    "failed": "传输失败"
+  },
+  "en": {
+    "app_title": "LS send",
+    "file_selector_label": "Select file:",
+    "browse_button": "Browse",
+    "send_button": "Send",
+    "device_list_label": "Available devices:",
+    "progress_title": "File Transfer",
+    "cancel_button": "Cancel",
+    "notification_title": "File Request Received",
+    "notification_accept": "Accept",
+    "notification_decline": "Decline",
+    "transferring": "Transferring: {filename}",
+    "complete": "Transfer Complete",
+    "failed": "Transfer Failed"
+  }
+}

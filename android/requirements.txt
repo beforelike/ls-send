@@ -1,0 +1,3 @@
+# LS send Android 依赖
+kivy>=2.3.0
+plyer>=2.1.0

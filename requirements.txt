@@ -1,0 +1,20 @@
+# LS send 依赖清单
+
+# GUI 框架（平台特定）
+PySide6>=6.5.0  # Windows GUI
+kivy>=2.3.0     # Android GUI（需配合 Buildozer）
+
+# 网络库（Kivy 已内置 asyncio）
+# WebSocket 通信（标准库 asyncio + websockets）
+websockets>=11.0
+
+# Android 通知（plyer）
+plyer>=2.1.0
+
+# 打包工具（开发时使用）
+pyinstaller>=5.0    # Windows 打包
+buildozer>=1.5.0    # Android 打包
+
+# 开发工具（可选）
+black>=23.0         # 代码格式化（PEP 8）
+ruff>=0.0.280       # Linter（可选）
